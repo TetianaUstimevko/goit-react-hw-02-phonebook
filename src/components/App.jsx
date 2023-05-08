@@ -19,15 +19,10 @@ class App extends Component {
   addContact = ({ name, number }) => {
     const normalizedName = name.toLowerCase();
 
-    let isAdded = false;
-    this.state.contacts.forEach(el => {
-      if (el.name.toLowerCase() === normalizedName) {
-        alert(`${name} is already in contacts`);
-        isAdded = true;
-      }
-    });
+    const isAdded = this.state.contacts.some(el => el.name.toLowerCase() === normalizedName);
 
     if (isAdded) {
+      alert(`${name} is already in contacts`);
       return;
     }
     const contact = {
